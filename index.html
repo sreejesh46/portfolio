@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sreejesh Mohan | Sreejesh</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+  <script src="typing.js" defer></script>
+
+  <!-- Fonts and Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-H8Pax0dGfO0Bu93+ORuA2bLoZRvqWlLzGzUoZ3vW+nZbcrN57MAtXmF6iUGDnprF9TJvnt+whRDNh0+hwX2ORQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<!-- Particle.js script -->
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<!-- Particle container -->
+<div id="particles-js"></div>
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <script>
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  
+  // Optional: Add a delay *before* fading
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    
+    setTimeout(() => {
+      loader.style.display = "none";
+      document.body.classList.add("loaded");
+    }, 500); // fade-out duration (optional)
+    
+  }, 300); // loader stays for 3 seconds
+});
+
+
+  </script>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+<div class="logo">
+  <img src="https://img.icons8.com/?size=100&id=21566&format=png&color=ffffff" alt="Logo" class="logo-img">
+  <span>Sreejesh</span>
+</div>
+<ul class="nav-links">
+  <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+  <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+  <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
+  <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
+  <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+</ul>
+
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="home-section">
+    <div class="home-content">
+      <h2>Hello, It's Me</h2>
+      <h1>Sreejesh Mohan</h1>
+      <h3>I am <span class="typing" id="typed-text"></span></h3>
+      <p>
+        I'm a BTech graduate, creative and detail-oriented, with hands-on experience in HTML, CSS, JavaScript, and tools like Adobe After Effects and Premiere Pro.
+        I design interactive websites and produce cinematic video edits that truly stand out.
+      </p>
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/sreejeshmohan/" target="_blank" title="LinkedIn">
+          <img src="https://img.icons8.com/ios-filled/100/00f6ff/linkedin.png" alt="LinkedIn" class="icon-img" />
+        </a>
+        <a href="https://github.com/sreejesh46" target="_blank" title="GitHub">
+          <img src="https://img.icons8.com/ios-glyphs/100/00f6ff/github.png" alt="GitHub" class="icon-img" />
+        </a>
+        <a href="https://twitter.com/sreejes46" target="_blank" title="X (Twitter)">
+          <img src="https://img.icons8.com/ios-filled/100/00f6ff/x.png" alt="X (Twitter)" class="icon-img" />
+        </a>
+      </div>
+
+      <a href="resume.pdf" class="btn" target="_blank">Download CV</a>
+    </div>
+
+    <div class="home-img">
+      <div class="img-box">
+        <img src="pfp.jpg" alt="Sreejesh Mohan" />
+      </div>
+    </div>
+  </section>
+
+<section id="about" class="about-section">
+  <div class="about-container">
+
+    <!-- Heading -->
+    <h2>About Me</h2><br>
+
+    <!-- GIF -->
+    <img src="https://giffiles.alphacoders.com/107/107162.gif" alt="Sreejesh Mohan GIF" class="profile-image" />
+
+    <!-- Paragraphs -->
+    <div class="about-text">
+      <p>
+        I'm <strong>Sreejesh Mohan</strong>, a passionate front-end developer, video editor, and creative designer.
+        <br>I hold a BTech degree in Computer Science and have hands-on experience building responsive websites and crafting cinematic edits.
+        <br>My skillset includes HTML, CSS, JavaScript, React, and tools like Adobe After Effects and Premiere Pro.
+      </p><br>
+
+      <p>
+        I thrive on challenges and love to create interactive, user-friendly web experiences. My video editing skills allow me to produce engaging content that tells a story.
+        I'm always eager to learn new technologies and improve my craft.
+      </p><br>
+
+      <p>
+        I've worked on several academic and group projects such as <br>
+        <br> <li><strong>Blood Bank Management System</strong></li><br>
+        <li><strong>CSE Inventory Management</strong></li> <br> 
+        <li> <strong>Personal Health Record (PHR) using Blockchain</strong></li>
+        <br>You can read my published paper on PHR here:
+     <a href="https://www.jetir.org/view?paper=JETIR2405192" target="_blank" class="jetir-link">
+  JETIR - PHR using Blockchain
+</a>
+
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- Projects Section -->
+<section id="projects" class="projects-section">
+  <h2>My Projects</h2>
+
+  <!-- Web Development Projects -->
+  <h3 class="subheading">Web Development Projects</h3>
+  <div class="project-grid">
+    <div class="project-card">
+      <h4>Blood Bank Management</h4>
+      <img src="https://www.sourcecodester.com/sites/default/files/2020-10/images/bloodbank.png" alt="Blood Bank Project">
+      <p>A web-based system to manage blood donors, requests, and inventory in hospitals efficiently.</p>
+    </div>
+<div class="project-card">
+  <h4>CSE Inventory Management</h4>
+  <img src="https://spherewms.com/wp-content/uploads/2024/01/SPH-Whse-Inv-Mgmt-Blog-shutterstock_1930996376-1.webp" alt="Inventory Project">
+  <p>
+    Built for the CSE department to keep track of lab assets, components, and request workflows.
+    <br><br>
+    <a href="https://drive.google.com/file/d/1JtgLQHxpvDwF6J1U3p6eeWn-rYSr98ai/view?usp=drive_link" target="_blank" class="project-link">Go to Report</a>
+  </p>
+</div>
+    <div class="project-card">
+      <h4>PHR using Blockchain</h4>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKq6N2X-H4MC71XYSLO9rSACC_lbB02zYg2g&s" alt="Blockchain Project">
+      <p>Secure Personal Health Records system using Ethereum blockchain. <br>
+            <a href="https://drive.google.com/file/d/1aURL6WkzHNMbimUHJvuwCxpQXFe4mzMH/view?usp=drive_link" target="_blank" class="project-link">Go to Report</a><br>
+        <a href="https://www.jetir.org/view?paper=JETIR2405192" target="_blank" class="jetir-link">Read Paper</a>
+      </p>
+    </div>
+  </div>
+</section>
+  <!-- Video Editing Works -->
+<section class="video-editing-section">
+  <h2 class="section-heading">Video Editing Works</h2>
+  <div class="project-grid">
+    <div class="project-card">
+  <h4>1</h4>
+  <div class="video-wrapper aspect-1-1">
+    <video autoplay muted loop playsinline>
+      <source src="src/1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <p>Lyrical Style Video Edit with color grading</p>
+</div>
+
+<div class="project-card">
+  <h4>2</h4>
+  <div class="video-wrapper aspect-4-3">
+    <video autoplay muted loop playsinline>
+      <source src="src/2.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <p>fast transitions and synced beats.</p>
+</div>
+
+<div class="project-card">
+  <h4>3</h4>
+  <div class="video-wrapper aspect-16-9">
+    <video autoplay muted loop playsinline>
+      <source src="src/3.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <p>overlay 24 fps video edit</p>
+</div>
+</section>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>
