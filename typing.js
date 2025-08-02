@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   
   // Typing effect for changing roles
-  const texts = ["Web Developer", "Video Editor"]; // Texts to cycle through
+  const texts = ["Web Developer", "Video Editor","AI Enthusiast"]; // Texts to cycle through
   let count = 0;        // Index for the current text
   let index = 0;        // Character index within the current text
   let currentText = ""; // Text being displayed
