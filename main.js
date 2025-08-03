@@ -261,4 +261,266 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     retina_detect: true, // High-res support
   });
+
+  // ===============================
+  // Contact Form with EmailJS
+  // ===============================
+
+  // Initialize EmailJS - REPLACE 'demo_key' with your actual public key from EmailJS
+  emailjs.init("QLgI6IHw0GioNMn9e"); // 👈 STEP 4: Replace this with your Public Key
+
+  const contactForm = document.getElementById('contactForm');
+  
+  if (contactForm) {
+    // Form validation functions
+    function validateName(name) {
+      return name.trim().length >= 2 && /^[a-zA-Z\s]+$/.test(name.trim());
+    }
+
+    function validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email.trim());
+    }
+
+    function validateSubject(subject) {
+      return subject.trim().length >= 5;
+    }
+
+    function validateMessage(message) {
+      return message.trim().length >= 10;
+    }
+
+    // Show error message
+    function showError(fieldId, message) {
+      const field = document.getElementById(fieldId);
+      const errorElement = document.getElementById(fieldId + 'Error');
+      const formGroup = field.closest('.form-group');
+      
+      formGroup.classList.add('error');
+      formGroup.classList.remove('success');
+      errorElement.textContent = message;
+      errorElement.classList.add('show');
+    }
+
+    // Show success state
+    function showSuccess(fieldId) {
+      const field = document.getElementById(fieldId);
+      const errorElement = document.getElementById(fieldId + 'Error');
+      const formGroup = field.closest('.form-group');
+      
+      formGroup.classList.add('success');
+      formGroup.classList.remove('error');
+      errorElement.textContent = '';
+      errorElement.classList.remove('show');
+    }
+
+    // Clear validation state
+    function clearValidation(fieldId) {
+      const field = document.getElementById(fieldId);
+      const errorElement = document.getElementById(fieldId + 'Error');
+      const formGroup = field.closest('.form-group');
+      
+      formGroup.classList.remove('error', 'success');
+      errorElement.textContent = '';
+      errorElement.classList.remove('show');
+    }
+
+    // Real-time validation on input
+    document.getElementById('name').addEventListener('input', function() {
+      const name = this.value;
+      if (name === '') {
+        clearValidation('name');
+      } else if (!validateName(name)) {
+        showError('name', 'Please enter a valid name (letters only, minimum 2 characters)');
+      } else {
+        showSuccess('name');
+      }
+    });
+
+    document.getElementById('email').addEventListener('input', function() {
+      const email = this.value;
+      if (email === '') {
+        clearValidation('email');
+      } else if (!validateEmail(email)) {
+        showError('email', 'Please enter a valid email address');
+      } else {
+        showSuccess('email');
+      }
+    });
+
+    document.getElementById('subject').addEventListener('input', function() {
+      const subject = this.value;
+      if (subject === '') {
+        clearValidation('subject');
+      } else if (!validateSubject(subject)) {
+        showError('subject', 'Subject must be at least 5 characters long');
+      } else {
+        showSuccess('subject');
+      }
+    });
+
+    document.getElementById('message').addEventListener('input', function() {
+      const message = this.value;
+      if (message === '') {
+        clearValidation('message');
+      } else if (!validateMessage(message)) {
+        showError('message', 'Message must be at least 10 characters long');
+      } else {
+        showSuccess('message');
+      }
+    });
+
+    // Form submission handler with EmailJS
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      let isValid = true;
+
+      // Validate all fields
+      if (!validateName(name)) {
+        showError('name', 'Please enter a valid name (letters only, minimum 2 characters)');
+        isValid = false;
+      } else {
+        showSuccess('name');
+      }
+
+      if (!validateEmail(email)) {
+        showError('email', 'Please enter a valid email address');
+        isValid = false;
+      } else {
+        showSuccess('email');
+      }
+
+      if (!validateSubject(subject)) {
+        showError('subject', 'Subject must be at least 5 characters long');
+        isValid = false;
+      } else {
+        showSuccess('subject');
+      }
+
+      if (!validateMessage(message)) {
+        showError('message', 'Message must be at least 10 characters long');
+        isValid = false;
+      } else {
+        showSuccess('message');
+      }
+
+      // If all validations pass
+      if (isValid) {
+        const submitBtn = document.querySelector('.submit-btn');
+        const originalContent = submitBtn.innerHTML;
+        
+        // Show loading state
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        submitBtn.style.background = 'linear-gradient(45deg, #6b7280, #4b5563)';
+        
+        // Prepare email parameters
+        const emailParams = {
+          from_name: name,
+          from_email: email,
+          subject: subject,
+          message: message,
+          to_email: 'sreejeshmohan46@gmail.com'
+        };
+
+        // Send email using EmailJS
+        // 👈 STEP 4: Replace 'demo_service' and 'demo_template' with your actual IDs
+        emailjs.send('service_rpy309r', 'template_63rrpxn', emailParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Show success message
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent Successfully!';
+            submitBtn.style.background = 'linear-gradient(45deg, #10b981, #059669)';
+            
+            // Reset form after 3 seconds
+            setTimeout(() => {
+              contactForm.reset();
+              ['name', 'email', 'subject', 'message'].forEach(clearValidation);
+              submitBtn.innerHTML = originalContent;
+              submitBtn.style.background = 'linear-gradient(45deg, #38bdf8, #00f6ff)';
+              submitBtn.disabled = false;
+            }, 3000);
+            
+          }, function(error) {
+            console.error('FAILED...', error);
+            
+            // Show error message
+            submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to Send';
+            submitBtn.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+              submitBtn.innerHTML = originalContent;
+              submitBtn.style.background = 'linear-gradient(45deg, #38bdf8, #00f6ff)';
+              submitBtn.disabled = false;
+            }, 3000);
+          });
+      }
+    });
+  }
 });
+
+// ===============================
+// Resume Options Modal Functions
+// ===============================
+
+function openResumeModal() {
+  const modal = document.getElementById('resumeModal');
+  
+  // Show modal
+  modal.style.display = 'flex';
+  setTimeout(() => {
+    modal.classList.add('active');
+  }, 10);
+  
+  // Prevent body scrolling when modal is open
+  document.body.style.overflow = 'hidden';
+}
+
+function closeResumeModal() {
+  const modal = document.getElementById('resumeModal');
+  
+  // Hide modal with animation
+  modal.classList.remove('active');
+  setTimeout(() => {
+    modal.style.display = 'none';
+  }, 300);
+  
+  // Restore body scrolling
+  document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(event) {
+  const modal = document.getElementById('resumeModal');
+  const modalContent = document.querySelector('.resume-modal-content');
+  
+  if (modal && event.target === modal && !modalContent.contains(event.target)) {
+    closeResumeModal();
+  }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    const modal = document.getElementById('resumeModal');
+    if (modal && modal.classList.contains('active')) {
+      closeResumeModal();
+    }
+  }
+});
+
+// Direct download function (can be used as alternative)
+function downloadResume() {
+  const link = document.createElement('a');
+  link.href = 'Sreejesh_Mohan_Resume.pdf';
+  link.download = 'Sreejesh_Mohan_Resume.pdf';
+  link.click();
+}

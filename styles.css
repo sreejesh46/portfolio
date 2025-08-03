@@ -664,6 +664,42 @@ body.loaded .navbar {
   box-shadow: 0 0 20px #00f6ff;
 }
 
+/* Resume Actions Container */
+.resume-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Outline Button Variant */
+.btn.btn-outline {
+  background: transparent;
+  color: #00f6ff;
+  border: 2px solid #00f6ff;
+  box-shadow: none;
+}
+
+.btn.btn-outline:hover {
+  background: #00f6ff;
+  color: #000;
+  box-shadow: 0 0 20px #00f6ff;
+}
+
+/* Secondary Button Variant */
+.btn.btn-secondary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.btn.btn-secondary:hover {
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.7);
+  transform: translateY(-2px);
+}
+
 /* Home Image Styles */
 .home-img {
   flex-shrink: 0;
@@ -705,6 +741,20 @@ body.loaded .navbar {
     width: 200px;
     height: auto;
     border-radius: 150px;
+  }
+  
+  /* Resume Actions Mobile Styles */
+  .resume-actions {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .resume-actions .btn {
+    width: 100%;
+    text-align: center;
+    padding: 15px 30px;
+    font-size: 1rem;
   }
 }
 
@@ -2040,6 +2090,173 @@ body.loaded .navbar {
   margin-right: auto;
 }
 
+/* Contact Form Styles */
+.contact-form-container {
+  max-width: 600px;
+  margin: 0 auto 50px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(56, 189, 248, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.contact-form-container:hover::before {
+  left: 100%;
+}
+
+.contact-form-container h3 {
+  font-size: 1.8rem;
+  color: #38bdf8;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-form {
+  position: relative;
+  z-index: 2;
+}
+
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  font-size: 1rem;
+  color: #38bdf8;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(56, 189, 248, 0.3);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #94a3b8;
+}
+
+.error-message {
+  display: block;
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  min-height: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.error-message.show {
+  opacity: 1;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #38bdf8, #00f6ff);
+  color: #0f172a;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(45deg, #0ea5e9, #38bdf8);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.5);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn i {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Loading and disabled states */
+.submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.submit-btn:disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+/* Form Animation States */
+.form-group.error input,
+.form-group.error textarea {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.form-group.success input,
+.form-group.success textarea {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
 .contact-options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -2213,6 +2430,31 @@ body.loaded .navbar {
     font-size: 2rem;
   }
 
+  .contact-form-container {
+    padding: 30px 20px;
+    margin-bottom: 40px;
+  }
+
+  .contact-form-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+  }
+
+  .submit-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
   .contact-options {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -2268,6 +2510,40 @@ body.loaded .navbar {
 
 /* Extra Mobile Responsiveness for very small screens */
 @media (max-width: 480px) {
+  .contact-form-container {
+    padding: 25px 15px;
+    margin-bottom: 30px;
+  }
+
+  .contact-form-container h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+  }
+
+  .error-message {
+    font-size: 0.8rem;
+  }
+
   .loader-logo {
     width: 50px;
     height: 50px;
@@ -2292,5 +2568,198 @@ body.loaded .navbar {
   .geo-element {
     width: 8px;
     height: 8px;
+  }
+}
+
+/* -------------------------------
+   RESUME OPTIONS MODAL STYLES
+---------------------------------*/
+.resume-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.resume-modal.active {
+  display: flex;
+  opacity: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+  border: 1px solid rgba(0, 246, 255, 0.3);
+}
+
+.resume-modal.active .resume-modal-content {
+  transform: scale(1);
+}
+
+.resume-modal-header {
+  background: linear-gradient(135deg, #00f6ff 0%, #0078ff 100%);
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.resume-modal-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.resume-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resume-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.resume-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  padding: 30px 25px;
+}
+
+.resume-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 246, 255, 0.2);
+  border-radius: 15px;
+  padding: 25px 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.resume-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 246, 255, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 246, 255, 0.1);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  background: linear-gradient(135deg, #00f6ff 0%, #0078ff 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.resume-card h4 {
+  font-size: 1.2rem;
+  margin: 0 0 10px 0;
+  color: #00f6ff;
+}
+
+.resume-card p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+.card-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.view-btn {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: white;
+}
+
+.view-btn:hover {
+  background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #00f6ff 0%, #0078ff 100%);
+  color: white;
+}
+
+.download-btn:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 246, 255, 0.4);
+}
+
+/* Mobile responsiveness for Resume modal */
+@media (max-width: 768px) {
+  .resume-modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .resume-modal-header {
+    padding: 15px 20px;
+  }
+  
+  .resume-modal-title {
+    font-size: 1.2rem;
+  }
+  
+  .resume-options {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 25px 20px;
+  }
+  
+  .resume-card {
+    padding: 20px 15px;
+  }
+  
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
   }
 }
