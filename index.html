@@ -617,6 +617,281 @@ window.addEventListener("load", () => {
   </div>
 </footer>
 
+<!-- Resume Details Modal -->
+<div id="resumeDetailsModal" class="resume-details-modal">
+  <div class="resume-details-content">
+    <div class="resume-details-header">
+      <h3 class="resume-details-title">Resume - Sreejesh Mohan</h3>
+      <button class="resume-details-close-btn" onclick="closeResumeDetailsModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="resume-details-body">
+      <!-- Skills Section -->
+      <div class="resume-section">
+        <div class="section-header">
+          <i class="fas fa-tools"></i>
+          <h4>My Skills</h4>
+        </div>
+        <div class="resume-skills-grid">
+          <!-- Programming Languages Card -->
+          <div class="resume-skill-category-card">
+            <div class="resume-category-header">
+              <div class="resume-category-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h5>Programming Languages</h5>
+            </div>
+            <div class="resume-skills-list">
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fab fa-html5"></i>
+                  <span>HTML</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fab fa-css3-alt"></i>
+                  <span>CSS</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fab fa-js-square"></i>
+                  <span>JavaScript</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fab fa-python"></i>
+                  <span>Python</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frameworks & Databases Card -->
+          <div class="resume-skill-category-card">
+            <div class="resume-category-header">
+              <div class="resume-category-icon">
+                <i class="fas fa-layer-group"></i>
+              </div>
+              <h5>Frameworks & Databases</h5>
+            </div>
+            <div class="resume-skills-list">
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fab fa-react"></i>
+                  <span>React</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fas fa-database"></i>
+                  <span>MongoDB</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fas fa-database"></i>
+                  <span>SQL</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fas fa-fire"></i>
+                  <span>Firebase</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Development Tools Card -->
+          <div class="resume-skill-category-card">
+            <div class="resume-category-header">
+              <div class="resume-category-icon">
+                <i class="fas fa-tools"></i>
+              </div>
+              <h5>Development Tools</h5>
+            </div>
+            <div class="resume-skills-list">
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fas fa-code"></i>
+                  <span>VS Code</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <img src="https://img.icons8.com/?size=100&id=108781&format=png&color=000000" alt="After Effects" class="resume-adobe-logo">
+                  <span>After Effects</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <img src="https://img.icons8.com/?size=100&id=e57Y1CnsOasB&format=png&color=000000" alt="Premiere Pro" class="resume-adobe-logo">
+                  <span>Premiere Pro</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <img src="https://img.icons8.com/?size=100&id=13677&format=png&color=000000" alt="Photoshop" class="resume-adobe-logo">
+                  <span>Photoshop</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Specialized Skills Card -->
+          <div class="resume-skill-category-card">
+            <div class="resume-category-header">
+              <div class="resume-category-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <h5>Specialized Skills</h5>
+            </div>
+            <div class="resume-skills-list">
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fas fa-palette"></i>
+                  <span>Color Grading</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+              
+              <div class="resume-skill-item">
+                <div class="resume-skill-info">
+                  <i class="fas fa-cut"></i>
+                  <span>Rotoscoping</span>
+                </div>
+                <div class="resume-skill-bar">
+                  <div class="resume-skill-progress"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education Section -->
+      <div class="resume-section">
+        <div class="section-header">
+          <i class="fas fa-graduation-cap"></i>
+          <h4>Education</h4>
+        </div>
+        <div class="resume-education-grid">
+          <div class="resume-education-card">
+            <div class="resume-education-header">
+              <div class="resume-education-icon">
+                <i class="fas fa-university"></i>
+              </div>
+              <div class="resume-education-year">2020-2024</div>
+            </div>
+            <div class="resume-education-content">
+              <h5>BTech - Computer Science</h5>
+              <p class="resume-institution">Muthoot Institute of Technology and Science</p>
+              <div class="resume-education-status graduated">Graduated</div>
+            </div>
+          </div>
+          
+          <div class="resume-education-card">
+            <div class="resume-education-header">
+              <div class="resume-education-icon">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+              <div class="resume-education-year">2018-2020</div>
+            </div>
+            <div class="resume-education-content">
+              <h5>Plus Two (12th Grade)</h5>
+              <p class="resume-institution">Kshethra Pravesanan Memorial Vocational Higher Secondary School</p>
+              <div class="resume-education-mark good">76.8%</div>
+            </div>
+          </div>
+          
+          <div class="resume-education-card">
+            <div class="resume-education-header">
+              <div class="resume-education-icon">
+                <i class="fas fa-school"></i>
+              </div>
+              <div class="resume-education-year">2018</div>
+            </div>
+            <div class="resume-education-content">
+              <h5>10th Grade</h5>
+              <p class="resume-institution">Govt Technical High School, Mulamthuruthy</p>
+              <div class="resume-education-mark excellent">98%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resume Actions -->
+      <div class="resume-actions-section">
+        <div class="action-card">
+          <div class="action-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <div class="action-content">
+            <h5>View Resume</h5>
+            <p>Preview the complete resume</p>
+          </div>
+          <button onclick="showResumePreviewFromDetails()" class="action-btn view-action">
+            <i class="fas fa-eye"></i>
+            View Online
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Resume Options Modal -->
 <div id="resumeModal" class="resume-modal">
   <div class="resume-modal-content">
@@ -633,11 +908,11 @@ window.addEventListener("load", () => {
           <i class="fas fa-eye"></i>
         </div>
         <h4>View Resume</h4>
-        <p>Preview the resume online in your browser</p>
-        <a href="https://sreejeshmohan.tiiny.site/" target="_blank" class="card-button view-btn">
-          <i class="fas fa-external-link-alt"></i>
-          View Online
-        </a>
+        <p>Preview the resume in your browser</p>
+        <button onclick="showResumePreview()" class="card-button view-btn">
+          <i class="fas fa-eye"></i>
+          Preview Resume
+        </button>
       </div>
       
       <div class="resume-card download-card">
@@ -646,10 +921,51 @@ window.addEventListener("load", () => {
         </div>
         <h4>Download PDF</h4>
         <p>Download the resume as a PDF file</p>
-        <a href="Sreejesh_Mohan_Resume.pdf" download="Sreejesh_Mohan_Resume.pdf" class="card-button download-btn">
+        <a href="rs.pdf" download="Sreejesh_Mohan_Resume.pdf" class="card-button download-btn">
           <i class="fas fa-file-pdf"></i>
           Download PDF
         </a>
+      </div>
+      
+      <div class="resume-card details-card">
+        <div class="card-icon">
+          <i class="fas fa-info-circle"></i>
+        </div>
+        <h4>Resume Details</h4>
+        <p>View skills, education and full details</p>
+        <button onclick="openResumeDetailsFromModal()" class="card-button details-btn">
+          <i class="fas fa-list"></i>
+          View Details
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Resume Preview Modal -->
+<div id="resumePreviewModal" class="resume-preview-modal">
+  <div class="resume-preview-content">
+    <div class="resume-preview-header">
+      <h3 class="resume-preview-title">Resume Preview - Sreejesh Mohan</h3>
+      <div class="resume-preview-controls">
+        <button class="resume-preview-close-btn" onclick="closeResumePreview()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    
+    <div class="resume-preview-container">
+      <iframe id="resumePreviewFrame" class="resume-preview-frame" src=""></iframe>
+      <div id="resumePreviewError" class="resume-preview-error" style="display: none;">
+        <i class="fas fa-file-pdf"></i>
+        <h3>PDF Preview Not Available</h3>
+        <p>Your browser doesn't support PDF preview. Click below to view:</p>
+        <div class="error-actions">
+          <button onclick="openPDFInNewTab()" class="error-newtab-btn">
+            <i class="fas fa-external-link-alt"></i>
+            View Resume
+          </button>
+        </div>
       </div>
     </div>
   </div>

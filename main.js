@@ -269,8 +269,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize EmailJS - REPLACE 'demo_key' with your actual public key from EmailJS
   emailjs.init("QLgI6IHw0GioNMn9e"); // 👈 STEP 4: Replace this with your Public Key
 
-  const contactForm = document.getElementById('contactForm');
-  
+  const contactForm = document.getElementById("contactForm");
+
   if (contactForm) {
     // Form validation functions
     function validateName(name) {
@@ -293,175 +293,189 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show error message
     function showError(fieldId, message) {
       const field = document.getElementById(fieldId);
-      const errorElement = document.getElementById(fieldId + 'Error');
-      const formGroup = field.closest('.form-group');
-      
-      formGroup.classList.add('error');
-      formGroup.classList.remove('success');
+      const errorElement = document.getElementById(fieldId + "Error");
+      const formGroup = field.closest(".form-group");
+
+      formGroup.classList.add("error");
+      formGroup.classList.remove("success");
       errorElement.textContent = message;
-      errorElement.classList.add('show');
+      errorElement.classList.add("show");
     }
 
     // Show success state
     function showSuccess(fieldId) {
       const field = document.getElementById(fieldId);
-      const errorElement = document.getElementById(fieldId + 'Error');
-      const formGroup = field.closest('.form-group');
-      
-      formGroup.classList.add('success');
-      formGroup.classList.remove('error');
-      errorElement.textContent = '';
-      errorElement.classList.remove('show');
+      const errorElement = document.getElementById(fieldId + "Error");
+      const formGroup = field.closest(".form-group");
+
+      formGroup.classList.add("success");
+      formGroup.classList.remove("error");
+      errorElement.textContent = "";
+      errorElement.classList.remove("show");
     }
 
     // Clear validation state
     function clearValidation(fieldId) {
       const field = document.getElementById(fieldId);
-      const errorElement = document.getElementById(fieldId + 'Error');
-      const formGroup = field.closest('.form-group');
-      
-      formGroup.classList.remove('error', 'success');
-      errorElement.textContent = '';
-      errorElement.classList.remove('show');
+      const errorElement = document.getElementById(fieldId + "Error");
+      const formGroup = field.closest(".form-group");
+
+      formGroup.classList.remove("error", "success");
+      errorElement.textContent = "";
+      errorElement.classList.remove("show");
     }
 
     // Real-time validation on input
-    document.getElementById('name').addEventListener('input', function() {
+    document.getElementById("name").addEventListener("input", function () {
       const name = this.value;
-      if (name === '') {
-        clearValidation('name');
+      if (name === "") {
+        clearValidation("name");
       } else if (!validateName(name)) {
-        showError('name', 'Please enter a valid name (letters only, minimum 2 characters)');
+        showError(
+          "name",
+          "Please enter a valid name (letters only, minimum 2 characters)"
+        );
       } else {
-        showSuccess('name');
+        showSuccess("name");
       }
     });
 
-    document.getElementById('email').addEventListener('input', function() {
+    document.getElementById("email").addEventListener("input", function () {
       const email = this.value;
-      if (email === '') {
-        clearValidation('email');
+      if (email === "") {
+        clearValidation("email");
       } else if (!validateEmail(email)) {
-        showError('email', 'Please enter a valid email address');
+        showError("email", "Please enter a valid email address");
       } else {
-        showSuccess('email');
+        showSuccess("email");
       }
     });
 
-    document.getElementById('subject').addEventListener('input', function() {
+    document.getElementById("subject").addEventListener("input", function () {
       const subject = this.value;
-      if (subject === '') {
-        clearValidation('subject');
+      if (subject === "") {
+        clearValidation("subject");
       } else if (!validateSubject(subject)) {
-        showError('subject', 'Subject must be at least 5 characters long');
+        showError("subject", "Subject must be at least 5 characters long");
       } else {
-        showSuccess('subject');
+        showSuccess("subject");
       }
     });
 
-    document.getElementById('message').addEventListener('input', function() {
+    document.getElementById("message").addEventListener("input", function () {
       const message = this.value;
-      if (message === '') {
-        clearValidation('message');
+      if (message === "") {
+        clearValidation("message");
       } else if (!validateMessage(message)) {
-        showError('message', 'Message must be at least 10 characters long');
+        showError("message", "Message must be at least 10 characters long");
       } else {
-        showSuccess('message');
+        showSuccess("message");
       }
     });
 
     // Form submission handler with EmailJS
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
-      
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value;
+
       let isValid = true;
 
       // Validate all fields
       if (!validateName(name)) {
-        showError('name', 'Please enter a valid name (letters only, minimum 2 characters)');
+        showError(
+          "name",
+          "Please enter a valid name (letters only, minimum 2 characters)"
+        );
         isValid = false;
       } else {
-        showSuccess('name');
+        showSuccess("name");
       }
 
       if (!validateEmail(email)) {
-        showError('email', 'Please enter a valid email address');
+        showError("email", "Please enter a valid email address");
         isValid = false;
       } else {
-        showSuccess('email');
+        showSuccess("email");
       }
 
       if (!validateSubject(subject)) {
-        showError('subject', 'Subject must be at least 5 characters long');
+        showError("subject", "Subject must be at least 5 characters long");
         isValid = false;
       } else {
-        showSuccess('subject');
+        showSuccess("subject");
       }
 
       if (!validateMessage(message)) {
-        showError('message', 'Message must be at least 10 characters long');
+        showError("message", "Message must be at least 10 characters long");
         isValid = false;
       } else {
-        showSuccess('message');
+        showSuccess("message");
       }
 
       // If all validations pass
       if (isValid) {
-        const submitBtn = document.querySelector('.submit-btn');
+        const submitBtn = document.querySelector(".submit-btn");
         const originalContent = submitBtn.innerHTML;
-        
+
         // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
-        submitBtn.style.background = 'linear-gradient(45deg, #6b7280, #4b5563)';
-        
+        submitBtn.style.background = "linear-gradient(45deg, #6b7280, #4b5563)";
+
         // Prepare email parameters
         const emailParams = {
           from_name: name,
           from_email: email,
           subject: subject,
           message: message,
-          to_email: 'sreejeshmohan46@gmail.com'
+          to_email: "sreejeshmohan46@gmail.com",
         };
 
         // Send email using EmailJS
         // 👈 STEP 4: Replace 'demo_service' and 'demo_template' with your actual IDs
-        emailjs.send('service_rpy309r', 'template_63rrpxn', emailParams)
-          .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            
+        emailjs.send("service_rpy309r", "template_63rrpxn", emailParams).then(
+          function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+
             // Show success message
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent Successfully!';
-            submitBtn.style.background = 'linear-gradient(45deg, #10b981, #059669)';
-            
+            submitBtn.innerHTML =
+              '<i class="fas fa-check"></i> Message Sent Successfully!';
+            submitBtn.style.background =
+              "linear-gradient(45deg, #10b981, #059669)";
+
             // Reset form after 3 seconds
             setTimeout(() => {
               contactForm.reset();
-              ['name', 'email', 'subject', 'message'].forEach(clearValidation);
+              ["name", "email", "subject", "message"].forEach(clearValidation);
               submitBtn.innerHTML = originalContent;
-              submitBtn.style.background = 'linear-gradient(45deg, #38bdf8, #00f6ff)';
+              submitBtn.style.background =
+                "linear-gradient(45deg, #38bdf8, #00f6ff)";
               submitBtn.disabled = false;
             }, 3000);
-            
-          }, function(error) {
-            console.error('FAILED...', error);
-            
+          },
+          function (error) {
+            console.error("FAILED...", error);
+
             // Show error message
-            submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to Send';
-            submitBtn.style.background = 'linear-gradient(45deg, #ef4444, #dc2626)';
-            
+            submitBtn.innerHTML =
+              '<i class="fas fa-exclamation-triangle"></i> Failed to Send';
+            submitBtn.style.background =
+              "linear-gradient(45deg, #ef4444, #dc2626)";
+
             // Reset button after 3 seconds
             setTimeout(() => {
               submitBtn.innerHTML = originalContent;
-              submitBtn.style.background = 'linear-gradient(45deg, #38bdf8, #00f6ff)';
+              submitBtn.style.background =
+                "linear-gradient(45deg, #38bdf8, #00f6ff)";
               submitBtn.disabled = false;
             }, 3000);
-          });
+          }
+        );
       }
     });
   }
@@ -472,46 +486,217 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===============================
 
 function openResumeModal() {
-  const modal = document.getElementById('resumeModal');
-  
+  const modal = document.getElementById("resumeModal");
+
   // Show modal
-  modal.style.display = 'flex';
+  modal.style.display = "flex";
   setTimeout(() => {
-    modal.classList.add('active');
+    modal.classList.add("active");
   }, 10);
-  
+
   // Prevent body scrolling when modal is open
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = "hidden";
 }
 
 function closeResumeModal() {
-  const modal = document.getElementById('resumeModal');
-  
+  const modal = document.getElementById("resumeModal");
+
   // Hide modal with animation
-  modal.classList.remove('active');
+  modal.classList.remove("active");
   setTimeout(() => {
-    modal.style.display = 'none';
+    modal.style.display = "none";
   }, 300);
-  
+
   // Restore body scrolling
-  document.body.style.overflow = 'auto';
+  document.body.style.overflow = "auto";
 }
 
-// Close modal when clicking outside
-document.addEventListener('click', function(event) {
-  const modal = document.getElementById('resumeModal');
-  const modalContent = document.querySelector('.resume-modal-content');
+function showResumePreview() {
+  // Close the options modal first
+  closeResumeModal();
+
+  // Open the preview modal after a short delay
+  setTimeout(() => {
+    const previewModal = document.getElementById("resumePreviewModal");
+    const previewFrame = document.getElementById("resumePreviewFrame");
+    const previewError = document.getElementById("resumePreviewError");
+
+    // Show preview modal
+    previewModal.style.display = "flex";
+    setTimeout(() => {
+      previewModal.classList.add("active");
+    }, 10);
+
+    // Reset iframe and error states
+    previewFrame.style.display = "block";
+    previewError.style.display = "none";
+
+    // Try to load PDF in iframe
+    try {
+      // Clear any previous src first
+      previewFrame.src = "";
+      
+      // Use a timeout to allow the iframe to reset
+      setTimeout(() => {
+        // Try loading PDF with different parameters
+        previewFrame.src = "rs.pdf#view=FitH&toolbar=1&navpanes=0";
+        
+        // Set up a timer to check if PDF loaded after a reasonable time
+        let checkTimer = setTimeout(() => {
+          // If after 3 seconds the iframe is still blank/white, show error
+          try {
+            // Check if iframe has loaded content
+            const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+            if (!iframeDoc || iframeDoc.body.children.length === 0) {
+              console.log('PDF preview failed to load, showing error options');
+              showResumePreviewError();
+            }
+          } catch (e) {
+            // Cross-origin error is expected for PDFs, but if we get here after 3 seconds
+            // and still see blank, the PDF might not be loading properly
+            console.log('PDF preview: checking if blank...');
+            
+            // Alternative check: if iframe background is white and no content, show error
+            if (previewFrame.offsetHeight > 0) {
+              // If iframe has height but no visible content after 3 seconds, show fallback
+              const rect = previewFrame.getBoundingClientRect();
+              if (rect.height > 100) { // Iframe has size but might be blank
+                console.log('PDF preview appears blank, showing fallback options');
+                showResumePreviewError();
+              }
+            }
+          }
+        }, 3000);
+
+        // If load event fires, clear the check timer
+        previewFrame.onload = function() {
+          clearTimeout(checkTimer);
+          console.log('PDF iframe load event fired');
+          
+          // Additional check after load
+          setTimeout(() => {
+            try {
+              const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+              if (iframeDoc && iframeDoc.body && iframeDoc.body.children.length === 0) {
+                // Loaded but empty, show error
+                console.log('PDF loaded but appears empty, showing error');
+                showResumePreviewError();
+              }
+            } catch (e) {
+              // Cross-origin is normal for PDFs, assume it's working
+              console.log('PDF preview: Cross-origin behavior (normal for PDFs)');
+            }
+          }, 1000);
+        };
+
+        previewFrame.onerror = function() {
+          clearTimeout(checkTimer);
+          console.log('PDF preview failed with error');
+          showResumePreviewError();
+        };
+        
+      }, 100);
+
+    } catch (error) {
+      console.error('PDF preview error:', error);
+      showResumePreviewError();
+    }
+    
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = "hidden";
+  }, 300);
+}
+
+function closeResumePreview() {
+  const previewModal = document.getElementById("resumePreviewModal");
+  const previewFrame = document.getElementById("resumePreviewFrame");
+
+  // Hide modal with animation
+  previewModal.classList.remove("active");
+  setTimeout(() => {
+    previewModal.style.display = "none";
+    previewFrame.src = ""; // Clear iframe src to stop loading
+  }, 300);
+
+  // Restore body scrolling
+  document.body.style.overflow = "auto";
+}
+
+function showResumePreviewError() {
+  const previewFrame = document.getElementById("resumePreviewFrame");
+  const previewError = document.getElementById("resumePreviewError");
+
+  previewFrame.style.display = "none";
+  previewError.style.display = "flex";
   
+  console.log('Showing PDF preview error - browser may not support PDF embedding');
+}
+
+// Alternative function to open PDF in new tab if iframe fails
+function openPDFInNewTab() {
+  window.open('rs.pdf', '_blank');
+  // Close the preview modal since we're opening in new tab
+  closeResumePreview();
+}
+
+// Function to open resume details modal from options modal
+function openResumeDetailsFromModal() {
+  // Close the options modal first
+  closeResumeModal();
+  
+  // Open the details modal after a short delay
+  setTimeout(() => {
+    openResumeDetailsModal();
+  }, 300);
+}
+
+// Close modals when clicking outside
+document.addEventListener("click", function (event) {
+  // Handle resume details modal
+  const detailsModal = document.getElementById("resumeDetailsModal");
+  const detailsModalContent = document.querySelector(".resume-details-content");
+
+  if (
+    detailsModal &&
+    event.target === detailsModal &&
+    !detailsModalContent.contains(event.target)
+  ) {
+    closeResumeDetailsModal();
+  }
+
+  // Handle resume options modal
+  const modal = document.getElementById("resumeModal");
+  const modalContent = document.querySelector(".resume-modal-content");
+
   if (modal && event.target === modal && !modalContent.contains(event.target)) {
     closeResumeModal();
   }
+
+  // Handle resume preview modal
+  const previewModal = document.getElementById("resumePreviewModal");
+  const previewModalContent = document.querySelector(".resume-preview-content");
+
+  if (
+    previewModal &&
+    event.target === previewModal &&
+    !previewModalContent.contains(event.target)
+  ) {
+    closeResumePreview();
+  }
 });
 
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'Escape') {
-    const modal = document.getElementById('resumeModal');
-    if (modal && modal.classList.contains('active')) {
+// Close modals with Escape key
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    const detailsModal = document.getElementById("resumeDetailsModal");
+    const modal = document.getElementById("resumeModal");
+    const previewModal = document.getElementById("resumePreviewModal");
+
+    if (previewModal && previewModal.classList.contains("active")) {
+      closeResumePreview();
+    } else if (detailsModal && detailsModal.classList.contains("active")) {
+      closeResumeDetailsModal();
+    } else if (modal && modal.classList.contains("active")) {
       closeResumeModal();
     }
   }
@@ -519,8 +704,137 @@ document.addEventListener('keydown', function(event) {
 
 // Direct download function (can be used as alternative)
 function downloadResume() {
-  const link = document.createElement('a');
-  link.href = 'Sreejesh_Mohan_Resume.pdf';
-  link.download = 'Sreejesh_Mohan_Resume.pdf';
+  const link = document.createElement("a");
+  link.href = "rs.pdf";
+  link.download = "Sreejesh_Mohan_Resume.pdf";
   link.click();
+}
+
+// ===============================
+// Resume Details Modal Functions
+// ===============================
+
+// Function to open resume details modal
+function openResumeDetailsModal() {
+  const modal = document.getElementById("resumeDetailsModal");
+  if (modal) {
+    modal.style.display = "flex";
+    setTimeout(() => {
+      modal.classList.add("active");
+    }, 10);
+
+    // Prevent background scrolling
+    document.body.style.overflow = "hidden";
+  }
+}
+
+// Function to close resume details modal
+function closeResumeDetailsModal() {
+  const modal = document.getElementById("resumeDetailsModal");
+  if (modal) {
+    modal.classList.remove("active");
+
+    setTimeout(() => {
+      modal.style.display = "none";
+      // Restore background scrolling
+      document.body.style.overflow = "auto";
+    }, 300);
+  }
+}
+
+// Function to show resume preview from details modal
+function showResumePreviewFromDetails() {
+  // Close the details modal first
+  closeResumeDetailsModal();
+
+  // Open the preview modal after a short delay
+  setTimeout(() => {
+    const previewModal = document.getElementById("resumePreviewModal");
+    const previewFrame = document.getElementById("resumePreviewFrame");
+    const previewError = document.getElementById("resumePreviewError");
+
+    // Show preview modal
+    previewModal.style.display = "flex";
+    setTimeout(() => {
+      previewModal.classList.add("active");
+    }, 10);
+
+    // Reset iframe and error states
+    previewFrame.style.display = "block";
+    previewError.style.display = "none";
+
+    // Try to load PDF in iframe
+    try {
+      // Clear any previous src first
+      previewFrame.src = "";
+      
+      // Use a timeout to allow the iframe to reset
+      setTimeout(() => {
+        // Try loading PDF with different parameters
+        previewFrame.src = "rs.pdf#view=FitH&toolbar=1&navpanes=0";
+        
+        // Set up a timer to check if PDF loaded after a reasonable time
+        let checkTimer = setTimeout(() => {
+          // If after 3 seconds the iframe is still blank/white, show error
+          try {
+            // Check if iframe has loaded content
+            const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+            if (!iframeDoc || iframeDoc.body.children.length === 0) {
+              console.log('PDF preview failed to load, showing error options');
+              showResumePreviewError();
+            }
+          } catch (e) {
+            // Cross-origin error is expected for PDFs, but if we get here after 3 seconds
+            // and still see blank, the PDF might not be loading properly
+            console.log('PDF preview: checking if blank...');
+            
+            // Alternative check: if iframe background is white and no content, show error
+            if (previewFrame.offsetHeight > 0) {
+              // If iframe has height but no visible content after 3 seconds, show fallback
+              const rect = previewFrame.getBoundingClientRect();
+              if (rect.height > 100) { // Iframe has size but might be blank
+                console.log('PDF preview appears blank, showing fallback options');
+                showResumePreviewError();
+              }
+            }
+          }
+        }, 3000);
+
+        // If load event fires, clear the check timer
+        previewFrame.onload = function() {
+          clearTimeout(checkTimer);
+          console.log('PDF iframe load event fired');
+          
+          // Additional check after load
+          setTimeout(() => {
+            try {
+              const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+              if (iframeDoc && iframeDoc.body && iframeDoc.body.children.length === 0) {
+                // Loaded but empty, show error
+                console.log('PDF loaded but appears empty, showing error');
+                showResumePreviewError();
+              }
+            } catch (e) {
+              // Cross-origin is normal for PDFs, assume it's working
+              console.log('PDF preview: Cross-origin behavior (normal for PDFs)');
+            }
+          }, 1000);
+        };
+
+        previewFrame.onerror = function() {
+          clearTimeout(checkTimer);
+          console.log('PDF preview failed with error');
+          showResumePreviewError();
+        };
+        
+      }, 100);
+
+    } catch (error) {
+      console.error('PDF preview error:', error);
+      showResumePreviewError();
+    }
+
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = "hidden";
+  }, 300);
 }
