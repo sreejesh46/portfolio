@@ -6,8 +6,7 @@
   <title>Sreejesh Mohan | Sreejesh</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
-  <script src="typing.js" defer></script>
+  <script src="main.js" defer></script>
 
   <!-- Fonts and Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,23 +30,115 @@
 <body>
   <!-- Loader -->
   <div id="loader">
-    <div class="spinner"></div>
+    <div class="loader-container">
+      <!-- Animated Logo -->
+      <div class="loader-logo"></div>
+      
+      <!-- Geometric Loading Elements -->
+      <div class="geometric-loader">
+        <div class="geo-element"></div>
+        <div class="geo-element"></div>
+        <div class="geo-element"></div>
+        <div class="geo-element"></div>
+        <div class="geo-element"></div>
+      </div>
+      
+      <!-- Progress Bar -->
+      <div class="loader-progress">
+        <div class="progress-fill"></div>
+      </div>
+      
+      <!-- Loading Text -->
+      <div class="loader-text">Loading</div>
+    </div>
+    
+    <!-- Floating Particles -->
+    <div class="loader-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
   </div>
 
   <script>
+// Force scroll to top immediately when page starts loading
+window.scrollTo(0, 0);
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
+
+// Also force scroll to top before page loads
+window.addEventListener("beforeunload", () => {
+  window.scrollTo(0, 0);
+});
+
+// Force scroll to top when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+});
+
 window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
+  // Force scroll to top again after page loads
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
   
-  // Optional: Add a delay *before* fading
+  const loader = document.getElementById("loader");
+  const progressFill = document.querySelector(".progress-fill");
+  const loaderText = document.querySelector(".loader-text");
+  
+  // Simulate loading progress
+  let progress = 0;
+  const loadingTexts = ["Loading", "Initializing", "Preparing", "Almost Ready"];
+  let textIndex = 0;
+  
+  const progressInterval = setInterval(() => {
+    progress += Math.random() * 15 + 5; // Random increment between 5-20
+    
+    if (progress >= 100) {
+      progress = 100;
+      clearInterval(progressInterval);
+      
+      // Final loading text
+      loaderText.textContent = "Ready!";
+      
+      // Start fade out after a brief pause
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        loader.style.transform = "scale(0.9)";
+        
+        setTimeout(() => {
+          loader.style.display = "none";
+          document.body.classList.add("loaded");
+        }, 800); // fade-out duration
+      }, 500);
+    } else {
+      // Update progress bar width
+      progressFill.style.width = progress + "%";
+      
+      // Change loading text occasionally
+      if (progress > 25 * (textIndex + 1) && textIndex < loadingTexts.length - 1) {
+        textIndex++;
+        loaderText.textContent = loadingTexts[textIndex];
+      }
+    }
+  }, 100); // Update every 100ms
+  
+  // Ensure minimum loading time of 2.5 seconds
   setTimeout(() => {
-    loader.style.opacity = "0";
-    
-    setTimeout(() => {
-      loader.style.display = "none";
-      document.body.classList.add("loaded");
-    }, 500); // fade-out duration (optional)
-    
-  }, 300); // loader stays for 3 seconds
+    if (progress < 100) {
+      progress = 100;
+      progressFill.style.width = "100%";
+      loaderText.textContent = "Ready!";
+    }
+  }, 2500);
 });
 
 
@@ -60,12 +151,21 @@ window.addEventListener("load", () => {
   <img src="https://img.icons8.com/?size=100&id=21566&format=png&color=ffffff" alt="Logo" class="logo-img">
   <a href="index.html"><span>Sreejesh</span></a>
 </div>
-<ul class="nav-links">
+
+<!-- Hamburger Menu Button -->
+<div class="hamburger" id="hamburger">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<ul class="nav-links" id="nav-links">
   <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
   <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
   <li><a href="#skills"><i class="fas fa-tools"></i> Skills</a></li>
   <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
   <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+  <li><a href="https://sreejeshmohan.tiiny.site/" target="_blank"><i class="fas fa-file-pdf"></i> Resume</a></li>
 </ul>
 
     </nav>
@@ -142,6 +242,200 @@ window.addEventListener("load", () => {
 
   </div>
 </section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills-section">
+  <div class="skills-container">
+    <h2 class="skills-heading">My Skills</h2>
+    
+    <div class="skills-grid">
+      <!-- Programming Languages Card -->
+      <div class="skill-category-card">
+        <div class="category-header">
+          <div class="category-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>Programming Languages</h3>
+        </div>
+        <div class="skills-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fab fa-html5"></i>
+              <span>HTML</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fab fa-css3-alt"></i>
+              <span>CSS</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fab fa-js-square"></i>
+              <span>JavaScript</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fab fa-python"></i>
+              <span>Python</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frameworks & Databases Card -->
+      <div class="skill-category-card">
+        <div class="category-header">
+          <div class="category-icon">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <h3>Frameworks & Databases</h3>
+        </div>
+        <div class="skills-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fab fa-react"></i>
+              <span>React</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fas fa-database"></i>
+              <span>MongoDB</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fas fa-database"></i>
+              <span>SQL</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fas fa-fire"></i>
+              <span>Firebase</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Development Tools Card -->
+      <div class="skill-category-card">
+        <div class="category-header">
+          <div class="category-icon">
+            <i class="fas fa-tools"></i>
+          </div>
+          <h3>Development Tools</h3>
+        </div>
+        <div class="skills-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fas fa-code"></i>
+              <span>VS Code</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <img src="https://img.icons8.com/?size=100&id=108781&format=png&color=000000" alt="After Effects" class="adobe-logo">
+              <span>After Effects</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <img src="https://img.icons8.com/?size=100&id=e57Y1CnsOasB&format=png&color=000000" alt="Premiere Pro" class="adobe-logo">
+              <span>Premiere Pro</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <img src="https://img.icons8.com/?size=100&id=13677&format=png&color=000000" alt="Photoshop" class="adobe-logo">
+              <span>Photoshop</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Specialized Skills Card -->
+      <div class="skill-category-card">
+        <div class="category-header">
+          <div class="category-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Specialized Skills</h3>
+        </div>
+        <div class="skills-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fas fa-palette"></i>
+              <span>Color Grading</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-info">
+              <i class="fas fa-cut"></i>
+              <span>Rotoscoping</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Projects Section -->
 <section id="projects" class="projects-section">
   <h2>My Projects</h2>
@@ -166,10 +460,11 @@ window.addEventListener("load", () => {
     <div class="project-card">
       <h4>PHR using Blockchain</h4>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKq6N2X-H4MC71XYSLO9rSACC_lbB02zYg2g&s" alt="Blockchain Project">
-      <p>Secure Personal Health Records system using Ethereum blockchain. <br>
-            <a href="https://drive.google.com/file/d/1aURL6WkzHNMbimUHJvuwCxpQXFe4mzMH/view?usp=drive_link" target="_blank" class="project-link">Go to Report</a><br>
+      <p>Secure Personal Health Records system using Ethereum blockchain.</p>
+      <div class="project-buttons">
+        <a href="https://drive.google.com/file/d/1aURL6WkzHNMbimUHJvuwCxpQXFe4mzMH/view?usp=drive_link" target="_blank" class="project-link">Go to Report</a>
         <a href="https://www.jetir.org/view?paper=JETIR2405192" target="_blank" class="jetir-link">Read Paper</a>
-      </p>
+      </div>
     </div>
   </div>
 </section>
@@ -221,6 +516,68 @@ window.addEventListener("load", () => {
 </div>
 
 </section>
+
+<!-- Footer Section -->
+<footer id="contact" class="footer-section">
+  <div class="footer-container">
+    <div class="footer-content">
+      <h2>Connect With Me</h2>
+      <p>Let's collaborate and create something amazing together!</p>
+      
+      <div class="contact-options">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-info">
+            <h3>Email</h3>
+            <a href="mailto:sreejeshmohan46@gmail.com">sreejeshmohan46@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contact-info">
+            <h3>GitHub</h3>
+            <a href="https://github.com/sreejesh46" target="_blank">github.com/sreejesh46</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-linkedin"></i>
+          </div>
+          <div class="contact-info">
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/sreejeshmohan/" target="_blank">linkedin.com/in/sreejeshmohan</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/sreejeshmohan/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/sreejesh46" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/sreejes46" target="_blank" title="X (Twitter)">
+          <img src="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=000000" alt="X (Twitter)" style="width: 24px; height: 24px; filter: brightness(0) saturate(100%) invert(64%) sepia(17%) saturate(1007%) hue-rotate(181deg) brightness(92%) contrast(89%);">
+        </a>
+        <a href="https://www.instagram.com/trap.buddy" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Sreejesh Mohan. All rights reserved.</p>
+      <p>Built with passion and creativity ❤️</p>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
