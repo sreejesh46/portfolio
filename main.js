@@ -535,33 +535,38 @@ function showResumePreview() {
     try {
       // Clear any previous src first
       previewFrame.src = "";
-      
+
       // Use a timeout to allow the iframe to reset
       setTimeout(() => {
         // Try loading PDF with different parameters
         previewFrame.src = "rs.pdf#view=FitH&toolbar=1&navpanes=0";
-        
+
         // Set up a timer to check if PDF loaded after a reasonable time
         let checkTimer = setTimeout(() => {
           // If after 3 seconds the iframe is still blank/white, show error
           try {
             // Check if iframe has loaded content
-            const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+            const iframeDoc =
+              previewFrame.contentDocument ||
+              previewFrame.contentWindow.document;
             if (!iframeDoc || iframeDoc.body.children.length === 0) {
-              console.log('PDF preview failed to load, showing error options');
+              console.log("PDF preview failed to load, showing error options");
               showResumePreviewError();
             }
           } catch (e) {
             // Cross-origin error is expected for PDFs, but if we get here after 3 seconds
             // and still see blank, the PDF might not be loading properly
-            console.log('PDF preview: checking if blank...');
-            
+            console.log("PDF preview: checking if blank...");
+
             // Alternative check: if iframe background is white and no content, show error
             if (previewFrame.offsetHeight > 0) {
               // If iframe has height but no visible content after 3 seconds, show fallback
               const rect = previewFrame.getBoundingClientRect();
-              if (rect.height > 100) { // Iframe has size but might be blank
-                console.log('PDF preview appears blank, showing fallback options');
+              if (rect.height > 100) {
+                // Iframe has size but might be blank
+                console.log(
+                  "PDF preview appears blank, showing fallback options"
+                );
                 showResumePreviewError();
               }
             }
@@ -569,39 +574,45 @@ function showResumePreview() {
         }, 3000);
 
         // If load event fires, clear the check timer
-        previewFrame.onload = function() {
+        previewFrame.onload = function () {
           clearTimeout(checkTimer);
-          console.log('PDF iframe load event fired');
-          
+          console.log("PDF iframe load event fired");
+
           // Additional check after load
           setTimeout(() => {
             try {
-              const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
-              if (iframeDoc && iframeDoc.body && iframeDoc.body.children.length === 0) {
+              const iframeDoc =
+                previewFrame.contentDocument ||
+                previewFrame.contentWindow.document;
+              if (
+                iframeDoc &&
+                iframeDoc.body &&
+                iframeDoc.body.children.length === 0
+              ) {
                 // Loaded but empty, show error
-                console.log('PDF loaded but appears empty, showing error');
+                console.log("PDF loaded but appears empty, showing error");
                 showResumePreviewError();
               }
             } catch (e) {
               // Cross-origin is normal for PDFs, assume it's working
-              console.log('PDF preview: Cross-origin behavior (normal for PDFs)');
+              console.log(
+                "PDF preview: Cross-origin behavior (normal for PDFs)"
+              );
             }
           }, 1000);
         };
 
-        previewFrame.onerror = function() {
+        previewFrame.onerror = function () {
           clearTimeout(checkTimer);
-          console.log('PDF preview failed with error');
+          console.log("PDF preview failed with error");
           showResumePreviewError();
         };
-        
       }, 100);
-
     } catch (error) {
-      console.error('PDF preview error:', error);
+      console.error("PDF preview error:", error);
       showResumePreviewError();
     }
-    
+
     // Prevent body scrolling when modal is open
     document.body.style.overflow = "hidden";
   }, 300);
@@ -628,13 +639,15 @@ function showResumePreviewError() {
 
   previewFrame.style.display = "none";
   previewError.style.display = "flex";
-  
-  console.log('Showing PDF preview error - browser may not support PDF embedding');
+
+  console.log(
+    "Showing PDF preview error - browser may not support PDF embedding"
+  );
 }
 
 // Alternative function to open PDF in new tab if iframe fails
 function openPDFInNewTab() {
-  window.open('rs.pdf', '_blank');
+  window.open("rs.pdf", "_blank");
   // Close the preview modal since we're opening in new tab
   closeResumePreview();
 }
@@ -643,7 +656,7 @@ function openPDFInNewTab() {
 function openResumeDetailsFromModal() {
   // Close the options modal first
   closeResumeModal();
-  
+
   // Open the details modal after a short delay
   setTimeout(() => {
     openResumeDetailsModal();
@@ -767,33 +780,38 @@ function showResumePreviewFromDetails() {
     try {
       // Clear any previous src first
       previewFrame.src = "";
-      
+
       // Use a timeout to allow the iframe to reset
       setTimeout(() => {
         // Try loading PDF with different parameters
         previewFrame.src = "rs.pdf#view=FitH&toolbar=1&navpanes=0";
-        
+
         // Set up a timer to check if PDF loaded after a reasonable time
         let checkTimer = setTimeout(() => {
           // If after 3 seconds the iframe is still blank/white, show error
           try {
             // Check if iframe has loaded content
-            const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+            const iframeDoc =
+              previewFrame.contentDocument ||
+              previewFrame.contentWindow.document;
             if (!iframeDoc || iframeDoc.body.children.length === 0) {
-              console.log('PDF preview failed to load, showing error options');
+              console.log("PDF preview failed to load, showing error options");
               showResumePreviewError();
             }
           } catch (e) {
             // Cross-origin error is expected for PDFs, but if we get here after 3 seconds
             // and still see blank, the PDF might not be loading properly
-            console.log('PDF preview: checking if blank...');
-            
+            console.log("PDF preview: checking if blank...");
+
             // Alternative check: if iframe background is white and no content, show error
             if (previewFrame.offsetHeight > 0) {
               // If iframe has height but no visible content after 3 seconds, show fallback
               const rect = previewFrame.getBoundingClientRect();
-              if (rect.height > 100) { // Iframe has size but might be blank
-                console.log('PDF preview appears blank, showing fallback options');
+              if (rect.height > 100) {
+                // Iframe has size but might be blank
+                console.log(
+                  "PDF preview appears blank, showing fallback options"
+                );
                 showResumePreviewError();
               }
             }
@@ -801,36 +819,42 @@ function showResumePreviewFromDetails() {
         }, 3000);
 
         // If load event fires, clear the check timer
-        previewFrame.onload = function() {
+        previewFrame.onload = function () {
           clearTimeout(checkTimer);
-          console.log('PDF iframe load event fired');
-          
+          console.log("PDF iframe load event fired");
+
           // Additional check after load
           setTimeout(() => {
             try {
-              const iframeDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
-              if (iframeDoc && iframeDoc.body && iframeDoc.body.children.length === 0) {
+              const iframeDoc =
+                previewFrame.contentDocument ||
+                previewFrame.contentWindow.document;
+              if (
+                iframeDoc &&
+                iframeDoc.body &&
+                iframeDoc.body.children.length === 0
+              ) {
                 // Loaded but empty, show error
-                console.log('PDF loaded but appears empty, showing error');
+                console.log("PDF loaded but appears empty, showing error");
                 showResumePreviewError();
               }
             } catch (e) {
               // Cross-origin is normal for PDFs, assume it's working
-              console.log('PDF preview: Cross-origin behavior (normal for PDFs)');
+              console.log(
+                "PDF preview: Cross-origin behavior (normal for PDFs)"
+              );
             }
           }, 1000);
         };
 
-        previewFrame.onerror = function() {
+        previewFrame.onerror = function () {
           clearTimeout(checkTimer);
-          console.log('PDF preview failed with error');
+          console.log("PDF preview failed with error");
           showResumePreviewError();
         };
-        
       }, 100);
-
     } catch (error) {
-      console.error('PDF preview error:', error);
+      console.error("PDF preview error:", error);
       showResumePreviewError();
     }
 

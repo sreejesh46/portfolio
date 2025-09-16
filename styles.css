@@ -742,14 +742,14 @@ body.loaded .navbar {
     height: auto;
     border-radius: 150px;
   }
-  
+
   /* Resume Actions Mobile Styles */
   .resume-actions {
     flex-direction: column;
     gap: 10px;
     width: 100%;
   }
-  
+
   .resume-actions .btn {
     width: 100%;
     text-align: center;
@@ -2749,25 +2749,25 @@ body.loaded .navbar {
     width: 95%;
     margin: 20px;
   }
-  
+
   .resume-modal-header {
     padding: 15px 20px;
   }
-  
+
   .resume-modal-title {
     font-size: 1.2rem;
   }
-  
+
   .resume-options {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 25px 20px;
   }
-  
+
   .resume-card {
     padding: 20px 15px;
   }
-  
+
   .card-icon {
     width: 50px;
     height: 50px;
@@ -2974,33 +2974,33 @@ body.loaded .navbar {
     height: 95%;
     margin: 10px;
   }
-  
+
   .resume-preview-header {
     padding: 12px 15px;
   }
-  
+
   .resume-preview-title {
     font-size: 1.1rem;
   }
-  
+
   .resume-preview-controls {
     gap: 8px;
   }
-  
+
   .preview-download-btn,
   .preview-external-btn {
     padding: 6px 12px;
     font-size: 0.8rem;
   }
-  
+
   .resume-preview-error {
     padding: 20px;
   }
-  
+
   .resume-preview-error i {
     font-size: 3rem;
   }
-  
+
   .error-actions {
     flex-direction: column;
     gap: 10px;
@@ -3053,7 +3053,11 @@ body.loaded .navbar {
   align-items: center;
   padding: 25px 30px;
   border-bottom: 1px solid rgba(0, 246, 255, 0.2);
-  background: linear-gradient(135deg, rgba(0, 246, 255, 0.1) 0%, rgba(0, 120, 255, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 246, 255, 0.1) 0%,
+    rgba(0, 120, 255, 0.05) 100%
+  );
 }
 
 .resume-details-title {
@@ -3190,7 +3194,8 @@ body.loaded .navbar {
 .resume-skill-info .resume-adobe-logo {
   width: 20px;
   height: 20px;
-  filter: brightness(0) saturate(100%) invert(64%) sepia(89%) saturate(3847%) hue-rotate(180deg) brightness(101%) contrast(101%);
+  filter: brightness(0) saturate(100%) invert(64%) sepia(89%) saturate(3847%)
+    hue-rotate(180deg) brightness(101%) contrast(101%);
 }
 
 .resume-skill-info span {
@@ -3224,15 +3229,31 @@ body.loaded .navbar {
 }
 
 /* Different progress widths for variety */
-.resume-skill-item:nth-child(1) .resume-skill-progress { animation-delay: 0.2s; }
-.resume-skill-item:nth-child(2) .resume-skill-progress { animation-delay: 0.4s; }
-.resume-skill-item:nth-child(3) .resume-skill-progress { animation-delay: 0.6s; }
-.resume-skill-item:nth-child(4) .resume-skill-progress { animation-delay: 0.8s; }
+.resume-skill-item:nth-child(1) .resume-skill-progress {
+  animation-delay: 0.2s;
+}
+.resume-skill-item:nth-child(2) .resume-skill-progress {
+  animation-delay: 0.4s;
+}
+.resume-skill-item:nth-child(3) .resume-skill-progress {
+  animation-delay: 0.6s;
+}
+.resume-skill-item:nth-child(4) .resume-skill-progress {
+  animation-delay: 0.8s;
+}
 
-.resume-skill-item:nth-child(1) .resume-skill-progress { width: 100%; }
-.resume-skill-item:nth-child(2) .resume-skill-progress { width: 100%; }
-.resume-skill-item:nth-child(3) .resume-skill-progress { width: 100%; }
-.resume-skill-item:nth-child(4) .resume-skill-progress { width: 100%; }
+.resume-skill-item:nth-child(1) .resume-skill-progress {
+  width: 100%;
+}
+.resume-skill-item:nth-child(2) .resume-skill-progress {
+  width: 100%;
+}
+.resume-skill-item:nth-child(3) .resume-skill-progress {
+  width: 100%;
+}
+.resume-skill-item:nth-child(4) .resume-skill-progress {
+  width: 100%;
+}
 
 .resume-skill-tag {
   background: rgba(0, 246, 255, 0.1);
@@ -3263,7 +3284,7 @@ body.loaded .navbar {
   border-radius: 15px;
   padding: 20px;
   transition: all 0.3s ease;
-  cursor:default;
+  cursor: default;
 }
 
 .resume-education-card:hover {
@@ -3436,89 +3457,89 @@ body.loaded .navbar {
     margin: 10px;
     max-height: 95vh;
   }
-  
+
   .resume-details-header {
     padding: 15px 20px;
   }
-  
+
   .resume-details-title {
     font-size: 1.2rem;
   }
-  
+
   .resume-details-body {
     padding: 20px;
   }
-  
+
   /* Resume Skills Grid Mobile */
   .resume-skills-grid {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
+
   .resume-skill-category-card {
     padding: 15px;
   }
-  
+
   .resume-category-header {
     gap: 10px;
   }
-  
+
   .resume-category-icon {
     width: 30px;
     height: 30px;
     font-size: 0.8rem;
   }
-  
+
   .resume-category-header h5 {
     font-size: 0.9rem;
   }
-  
+
   .resume-skill-tag {
     padding: 5px 10px;
     font-size: 0.75rem;
   }
-  
+
   /* Resume Education Grid Mobile */
   .resume-education-grid {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
+
   .resume-education-card {
     padding: 15px;
   }
-  
+
   .resume-education-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 12px;
   }
-  
+
   .resume-education-icon {
     width: 30px;
     height: 30px;
     font-size: 0.8rem;
   }
-  
+
   .resume-education-year {
     font-size: 0.8rem;
     padding: 4px 10px;
   }
-  
+
   .resume-education-content h5 {
     font-size: 0.9rem;
   }
-  
+
   .resume-institution {
     font-size: 0.8rem;
   }
-  
+
   .resume-actions-section {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
+
   .action-card {
     padding: 15px;
   }
