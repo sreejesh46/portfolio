@@ -87,8 +87,7 @@ If hosted, visit: [your live URL here]
 
 ## 📬 Contact
 
-Email: info@unifiedmentor.com  
-Website: [unifiedmentor.com](https://unifiedmentor.com)
+Email: sreejeshmohan46@gmail.com  
 
 ---
 
