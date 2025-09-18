@@ -70,7 +70,7 @@ portfolio/
 
 ## 🌍 Live Preview
 
-If hosted, visit: https://sreejesh46.github.io/portfolio/
+https://sreejesh46.github.io/portfolio/
 
 ---
 
