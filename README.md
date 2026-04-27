@@ -70,7 +70,7 @@ portfolio/
 
 ## 🌍 Live Preview
 
-https://sreejesh46.github.io/portfolio/
+https://portfolio-mu-ten-70.vercel.app/
 
 ---
 
