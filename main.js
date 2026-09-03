@@ -42,89 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   type(); // Start typing animation
 
-  // ===============================
-  // Skills Section Background Animation
-  // ===============================
-
-  function createFloatingElements() {
-    const skillsSection = document.querySelector(".skills-section");
-    if (!skillsSection) return;
-
-    // Create floating code symbols
-    const symbols = [
-      "<>",
-      "{}",
-      "[]",
-      "/>",
-      "<!--",
-      "-->",
-      "()",
-      "=>",
-      "&&",
-      "||",
-    ];
-
-    for (let i = 0; i < 15; i++) {
-      const element = document.createElement("div");
-      element.className = "floating-symbol";
-      element.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-      element.style.cssText = `
-        position: absolute;
-        color: rgba(56, 189, 248, 0.1);
-        font-family: 'Courier New', monospace;
-        font-size: ${Math.random() * 20 + 10}px;
-        left: ${Math.random() * 100}%;
-        top: ${Math.random() * 100}%;
-        animation: floatSymbol ${Math.random() * 20 + 15}s infinite linear;
-        pointer-events: none;
-        z-index: 1;
-      `;
-      skillsSection.appendChild(element);
-    }
-
-    // Add CSS animation for floating symbols
-    if (!document.querySelector("#floating-symbols-style")) {
-      const style = document.createElement("style");
-      style.id = "floating-symbols-style";
-      style.textContent = `
-        @keyframes floatSymbol {
-          0% {
-            transform: translateY(100vh) rotate(0deg);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(-100px) rotate(360deg);
-            opacity: 0;
-          }
-        }
-        .floating-symbol {
-          user-select: none;
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }
-
-  // Initialize floating elements when skills section is in view
-  const skillsObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        createFloatingElements();
-        skillsObserver.unobserve(entry.target); // Only create once
-      }
-    });
-  });
-
-  const skillsSection = document.querySelector(".skills-section");
-  if (skillsSection) {
-    skillsObserver.observe(skillsSection);
-  }
 
   // ===============================
   // Smooth Scrolling for Navigation
@@ -186,20 +103,62 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===============================
-  // Video Hover Play Effect
+  // Video Click-to-Play Effect
   // ===============================
 
-  document.querySelectorAll(".hover-video").forEach((video) => {
-    video.volume = 0.4; // Set lower volume for all videos
-    video.muted = true; // Keep videos muted to allow autoplay on hover
+  document.querySelectorAll(".video-wrapper").forEach((wrapper) => {
+    const video = wrapper.querySelector("video");
+    const playBtn = wrapper.querySelector(".custom-play-btn");
+    
+    if (video && playBtn) {
+      video.volume = 0.2;
+      video.muted = false; // We can unmute if they are clicking, but usually good to keep muted first. Let's keep muted for safety, user can unmute if controls were visible, but they aren't.
+      
+      wrapper.addEventListener("click", () => {
+        if (video.paused) {
+          // Pause all other videos before playing this one
+          document.querySelectorAll(".video-wrapper").forEach((otherWrapper) => {
+            if (otherWrapper !== wrapper) {
+              const otherVideo = otherWrapper.querySelector("video");
+              const otherPlayBtn = otherWrapper.querySelector(".custom-play-btn");
+              if (otherVideo && !otherVideo.paused) {
+                otherVideo.pause();
+                otherPlayBtn.classList.remove("playing");
+                otherWrapper.classList.remove("is-playing");
+                otherPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+              }
+            }
+          });
 
-    // On hover: play video from start
-    video.addEventListener("mouseenter", () => {
-      if (video.paused) {
-        video.currentTime = 0;
-        video.play();
+          video.play();
+          playBtn.classList.add("playing");
+          wrapper.classList.add("is-playing");
+          playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+          video.pause();
+          playBtn.classList.remove("playing");
+          wrapper.classList.remove("is-playing");
+          playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+      });
+    }
+  });
+
+  // ===============================
+  // Scroll Animation Observer
+  // ===============================
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        // Optional: stop observing once it has animated in
+        // scrollObserver.unobserve(entry.target);
       }
     });
+  }, { threshold: 0.1 }); // Trigger when 10% visible
+
+  document.querySelectorAll(".scroll-animate").forEach((el) => {
+    scrollObserver.observe(el);
   });
 
   // ===============================
@@ -862,3 +821,4 @@ function showResumePreviewFromDetails() {
     document.body.style.overflow = "hidden";
   }, 300);
 }
+
