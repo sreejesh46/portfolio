@@ -46,7 +46,7 @@ portfolio/
 ├── styles.css
 ├── main.js
 ├── README.md
-├── rs.pdf                # Resume PDF
+├── resume.pdf            # Resume PDF
 ├── pfp.jpg               # Profile picture
 ├── favicon.png           # Site icon
 ├── src/

@@ -498,7 +498,7 @@ function showResumePreview() {
       // Use a timeout to allow the iframe to reset
       setTimeout(() => {
         // Try loading PDF with different parameters
-        previewFrame.src = "rs.pdf#view=FitH&toolbar=1&navpanes=0";
+        previewFrame.src = "resume.pdf#view=FitH&toolbar=1&navpanes=0";
 
         // Set up a timer to check if PDF loaded after a reasonable time
         let checkTimer = setTimeout(() => {
@@ -606,7 +606,7 @@ function showResumePreviewError() {
 
 // Alternative function to open PDF in new tab if iframe fails
 function openPDFInNewTab() {
-  window.open("rs.pdf", "_blank");
+  window.open("resume.pdf", "_blank");
   // Close the preview modal since we're opening in new tab
   closeResumePreview();
 }
@@ -677,7 +677,7 @@ document.addEventListener("keydown", function (event) {
 // Direct download function (can be used as alternative)
 function downloadResume() {
   const link = document.createElement("a");
-  link.href = "rs.pdf";
+  link.href = "resume.pdf";
   link.download = "Sreejesh_Mohan_Resume.pdf";
   link.click();
 }
@@ -743,7 +743,7 @@ function showResumePreviewFromDetails() {
       // Use a timeout to allow the iframe to reset
       setTimeout(() => {
         // Try loading PDF with different parameters
-        previewFrame.src = "rs.pdf#view=FitH&toolbar=1&navpanes=0";
+        previewFrame.src = "resume.pdf#view=FitH&toolbar=1&navpanes=0";
 
         // Set up a timer to check if PDF loaded after a reasonable time
         let checkTimer = setTimeout(() => {
